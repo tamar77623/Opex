@@ -1,0 +1,719 @@
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #f4f7fc;
+    --card: rgba(255, 255, 255, 0.92);
+
+    --text: #172033;
+    --muted: #8a94a6;
+
+    --border: #e6ebf3;
+
+    --primary: #4f6df5;
+    --primary-dark: #3454df;
+
+    --input-bg: #f8faff;
+
+    --shadow:
+        0 30px 80px rgba(30, 50, 90, 0.10),
+        0 8px 25px rgba(30, 50, 90, 0.05);
+}
+
+body {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 25px;
+
+    background:
+        radial-gradient(
+            circle at 10% 10%,
+            rgba(79, 109, 245, 0.13),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 90%,
+            rgba(117, 76, 255, 0.11),
+            transparent 32%
+        ),
+        linear-gradient(
+            135deg,
+            #f8faff 0%,
+            #f2f5fb 100%
+        );
+
+    font-family:
+        Inter,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    color: var(--text);
+}
+
+
+/* =========================================================
+   MAIN CONTAINERS
+========================================================= */
+
+.contanier,
+.contanier2 {
+    width: min(94%, 720px);
+
+    padding: 38px;
+
+    background: var(--card);
+
+    border: 1px solid rgba(255, 255, 255, 0.9);
+
+    border-radius: 30px;
+
+    box-shadow: var(--shadow);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+/* subtle light effect */
+
+.contanier::before,
+.contanier2::before {
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    top: -100px;
+    right: -80px;
+
+    background: rgba(79, 109, 245, 0.08);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+form {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    z-index: 2;
+}
+
+
+/* =========================================================
+   SEARCH INPUT
+========================================================= */
+
+input {
+    width: 100%;
+    height: 64px;
+
+    padding: 0 62px 0 22px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 19px;
+
+    outline: none;
+
+    background:
+        linear-gradient(
+            180deg,
+            #fbfcff,
+            #f7f9fd
+        );
+
+    color: var(--text);
+
+    margin: 10px;
+
+    font-size: 16px;
+    font-weight: 500;
+
+    letter-spacing: 0.1px;
+
+    box-shadow:
+        inset 0 1px 2px rgba(20, 30, 50, 0.025),
+        0 2px 5px rgba(20, 30, 50, 0.025);
+
+    transition:
+        border-color 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.25s ease;
+}
+
+input::placeholder {
+    color: #a0a9b8;
+    font-weight: 400;
+}
+
+input:hover {
+    border-color: #cdd5e3;
+
+    background: #ffffff;
+}
+
+input:focus {
+    background: #ffffff;
+
+    border-color: var(--primary);
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 0 0 4px rgba(79, 109, 245, 0.09),
+        0 12px 30px rgba(79, 109, 245, 0.09);
+}
+
+
+/* =========================================================
+   AI ICON
+========================================================= */
+
+form > img {
+    position: absolute;
+
+    right: 145px;
+
+    width: 31px;
+    height: 31px;
+
+    padding: 6px;
+
+    object-fit: contain;
+
+    background: rgba(255, 255, 255, 0.96);
+
+    border: 1px solid #e3e8f0;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 5px 14px rgba(30, 41, 59, 0.08);
+
+    pointer-events: auto;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
+
+form > img:hover {
+    transform:
+        translateY(-2px)
+        scale(1.08);
+
+    border-color: rgba(79, 109, 245, 0.35);
+
+    box-shadow:
+        0 8px 20px rgba(79, 109, 245, 0.16);
+}
+
+form > img:active {
+    transform: scale(0.96);
+}
+
+
+/* =========================================================
+   SEARCH BUTTON
+========================================================= */
+
+button {
+    flex-shrink: 0;
+
+    height: 64px;
+
+    padding: 0 28px;
+
+    border: none;
+
+    border-radius: 19px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #607cff 0%,
+            #4b68ed 48%,
+            #3456db 100%
+        );
+
+    color: #ffffff;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    letter-spacing: 0.2px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 12px 28px rgba(52, 86, 219, 0.22),
+        inset 0 1px 0 rgba(255, 255, 255, 0.25);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        filter 0.2s ease;
+}
+
+button:hover {
+    transform: translateY(-3px);
+
+    filter: brightness(1.05);
+
+    box-shadow:
+        0 17px 35px rgba(52, 86, 219, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.28);
+}
+
+button:active {
+    transform: translateY(-1px) scale(0.98);
+
+    box-shadow:
+        0 8px 18px rgba(52, 86, 219, 0.20);
+}
+
+
+/* =========================================================
+   BOTTOM AREA
+========================================================= */
+
+.images {
+    display: flex;
+    align-items: center;
+
+    margin-top: 27px;
+
+    padding-top: 23px;
+
+    border-top: 1px solid #edf0f5;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+/* =========================================================
+   IMAGE BUTTONS
+========================================================= */
+
+.images {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 14px;
+
+    margin-top: 27px;
+    padding-top: 23px;
+
+    border-top: 1px solid #edf0f5;
+
+    position: relative;
+    z-index: 2;
+}
+
+.images img {
+    width: 45px;
+    height: 45px;
+
+    padding: 9px;
+
+    object-fit: contain;
+
+    background: linear-gradient(
+        145deg,
+        #ffffff,
+        #f5f7fb
+    );
+
+    border: 1px solid #e4e8f0;
+    border-radius: 14px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 6px 16px rgba(31, 41, 55, 0.07);
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.images img:hover {
+    transform: translateY(-4px) scale(1.06);
+
+    background: #ffffff;
+
+    border-color: #d6ddea;
+
+    box-shadow:
+        0 12px 25px rgba(31, 41, 55, 0.13);
+}
+.images img:active {
+    transform: scale(0.96);
+}
+
+
+/* =========================================================
+   DARK / LIGHT BUTTONS
+========================================================= */
+
+#dark,
+#light {
+    width: 22px;
+    height: 22px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s ease,
+        opacity 0.25s ease;
+}
+
+#dark:hover,
+#light:hover {
+    transform: rotate(12deg) scale(1.12);
+}
+
+#light {
+    display: none;
+}
+
+
+/* =========================================================
+   SECOND CONTAINER
+========================================================= */
+
+.contanier2 {
+    display: none;
+
+    max-width: 350px;
+
+    margin: 50px auto;
+
+    padding: 30px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.98),
+            rgba(247,249,253,0.98)
+        );
+
+    border-radius: 22px;
+
+    box-shadow:
+        0 25px 60px rgba(30, 40, 70, 0.12);
+
+    flex-direction: column;
+
+    gap: 15px;
+
+    font-family:
+        "Segoe UI",
+        Tahoma,
+        Geneva,
+        Verdana,
+        sans-serif;
+}
+
+
+/* =========================================================
+   ACCOUNT TITLE / ELEMENT
+========================================================= */
+
+#acount {
+    display: block;
+
+    margin: 15px auto;
+
+    font-size: 18px;
+
+    font-weight: 700;
+
+    color: var(--text);
+}
+
+
+/* =========================================================
+   SECONDARY INPUTS
+========================================================= */
+
+#inp2,
+#inp3,
+#inp4 {
+    width: 300px;
+
+    box-sizing: border-box;
+
+    padding: 13px 15px;
+
+    border: 1px solid #dfe4ec;
+
+    border-radius: 10px;
+
+    font-size: 15px;
+
+    outline: none;
+
+    margin: auto;
+
+    background: #fafbfe;
+
+    color: #1f2937;
+
+    box-shadow:
+        inset 0 1px 2px rgba(0,0,0,0.025);
+
+    transition:
+        border-color 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.2s ease;
+}
+
+#inp2:hover,
+#inp3:hover,
+#inp4:hover {
+    border-color: #cbd3e0;
+
+    background: #ffffff;
+}
+
+#inp2:focus,
+#inp3:focus,
+#inp4:focus {
+    background: #ffffff;
+
+    border-color: var(--primary);
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 0 0 4px rgba(79, 109, 245, 0.08),
+        0 8px 20px rgba(79, 109, 245, 0.07);
+}
+
+
+/* =========================================================
+   ACCOUNT BUTTON
+========================================================= */
+
+#btn3 {
+    background:
+        linear-gradient(
+            135deg,
+            #55c978,
+            #35aa5c
+        );
+
+    color: white;
+
+    padding: 13px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    margin-top: 10px;
+
+    box-shadow:
+        0 9px 20px rgba(53, 170, 92, 0.18);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        filter 0.2s ease;
+}
+
+#btn3:hover {
+    background:
+        linear-gradient(
+            135deg,
+            #5bd17f,
+            #36ad5e
+        );
+
+    transform: translateY(-2px);
+
+    filter: brightness(1.03);
+
+    box-shadow:
+        0 13px 25px rgba(53, 170, 92, 0.25);
+}
+
+#btn3:active {
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   HEADINGS
+========================================================= */
+
+h3,
+h2 {
+    text-align: center;
+
+    color: var(--text);
+
+    font-weight: 750;
+
+    letter-spacing: -0.3px;
+}
+
+h2 {
+    font-size: 24px;
+}
+
+h3 {
+    font-size: 19px;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 15px;
+    }
+
+    .contanier {
+        width: 94%;
+
+        padding: 22px;
+
+        border-radius: 23px;
+    }
+
+    form {
+        gap: 8px;
+    }
+
+    #inp1 {
+        height: 56px;
+
+        font-size: 14px;
+
+        padding:
+            0 48px 0 16px;
+    }
+
+    #btn {
+        height: 56px;
+
+        padding: 0 17px;
+
+        border-radius: 16px;
+    }
+
+    form > img {
+        right: 105px;
+
+        width: 27px;
+        height: 27px;
+
+        padding: 5px;
+    }
+
+    .images {
+        margin-top: 20px;
+
+        padding-top: 18px;
+    }
+
+    .images img {
+        width: 42px;
+        height: 42px;
+    }
+
+    #inp2,
+    #inp3,
+    #inp4 {
+        width: 100%;
+    }
+
+    .contanier2 {
+        width: 94%;
+
+        padding: 24px;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL SCREENS
+========================================================= */
+
+@media (max-width: 400px) {
+
+    .contanier {
+        padding: 17px;
+    }
+
+    form {
+        gap: 6px;
+    }
+
+    #inp1 {
+        margin: 5px;
+
+        padding-left: 13px;
+
+        font-size: 13px;
+    }
+
+    #btn {
+        padding: 0 13px;
+
+        font-size: 13px;
+    }
+
+    form > img {
+        right: 91px;
+    }
+}
